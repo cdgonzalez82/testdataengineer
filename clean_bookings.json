@@ -1,0 +1,33 @@
+{
+  "source": {
+    "path": "inputs/",
+    "dataset": "bookings",
+    "format": "csv"
+  },
+  "transforms": [
+    {
+      "transform": "birthdate_to_age",
+      "fields": [
+        {"field": "user_birthdate", "new_field": "user_age"}
+      ]
+    },
+    {
+      "transform": "hot_encoding",
+      "fields": [
+        "vehicle_category"
+      ]
+    },
+    {
+      "transform": "fill_empty_values",
+      "fields": [
+        {"field": "km", "value": "median"},
+        {"field": "user_name", "value": "John Doe"}
+      ]
+    }
+  ],
+  "sink": {
+    "path": "outputs/",
+    "dataset": "bookings_cleaned",
+    "format": "parquet"
+  }
+}
